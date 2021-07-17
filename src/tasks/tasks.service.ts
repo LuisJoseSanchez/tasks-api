@@ -18,8 +18,8 @@ export class TasksService {
     return this.taskModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} task`;
+  async findOne(id: string): Promise<Task>{
+    return this.taskModel.findById(id);
   }
 
   update(id: number, updateTaskDto: UpdateTaskDto) {
