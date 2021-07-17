@@ -1,9 +1,14 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Task, TaskDocument } from 'src/schemas/task.schema';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
 @Injectable()
 export class TasksService {
+  constructor(@InjectModel(Task.name) private taskModel: Model<TaskDocument>) {}
+
   create(createTaskDto: CreateTaskDto) {
     return 'This action adds a new task';
   }
