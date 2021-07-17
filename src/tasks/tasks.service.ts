@@ -22,11 +22,11 @@ export class TasksService {
     return this.taskModel.findById(id);
   }
 
-  update(id: number, updateTaskDto: UpdateTaskDto) {
-    return `This action updates a #${id} task`;
+  async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
+    return this.taskModel.findByIdAndUpdate(id, updateTaskDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} task`;
+  async remove(id: string): Promise<Task> {
+    return this.taskModel.findByIdAndDelete(id);
   }
 }
